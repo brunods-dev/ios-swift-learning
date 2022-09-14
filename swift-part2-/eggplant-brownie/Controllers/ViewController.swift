@@ -8,16 +8,37 @@
 
 import UIKit
 
-protocol ViewControllerDelegate {
+protocol AdicionaRefeicaoDelegate {
     func add(_ refeicao: Refeicao)
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource {
     
-    var delegate: ViewControllerDelegate?
+    // MARK: Atributos
+    
+    var delegate: AdicionaRefeicaoDelegate?
+    var itens: [String] = ["Molho Pesto", "Molho carbonara", "Molho de tomate"]
+    
+    // MARK: IBOutlet
     
     @IBOutlet var nomeTextField: UITextField?
     @IBOutlet weak var felicidadeTextField: UITextField?
+    
+    //MARK: UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return itens.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        
+        let index = indexPath.row
+        cell.textLabel?.text = itens[index]
+        return cell
+    }
+    
+    //MARK: IBAction
     
     @IBAction func adicionar(_ sender: Any) {
         
