@@ -17,8 +17,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: Atributos
     
     var delegate: AdicionaRefeicaoDelegate?
-    var itens: [String] = ["Molho Pesto", "Molho carbonara", "Molho de tomate"]
-    
+    let itens: [Item] = [
+        Item(nome: "Molho Pesto", calorias: 13.0),
+        Item(nome: "Molho carbonara", calorias: 21.0),
+        Item(nome: "Molho pomodoro", calorias: 31.0),
+    ]
+    var itensSelecionados: [Item] = []
     // MARK: IBOutlet
     
     @IBOutlet var nomeTextField: UITextField?
@@ -34,7 +38,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         
         let index = indexPath.row
-        cell.textLabel?.text = itens[index]
+        cell.textLabel?.text = itens[index].nome
         return cell
     }
     
@@ -45,6 +49,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         guard let cell = tableView.cellForRow(at: indexPath) else {return }
         
         if cell.accessoryType == .none{
+            let tableRow = indexPath.row
+            itensSelecionados.append(itens[tableRow])
+            
             cell.accessoryType = .checkmark
         }else{
             cell.accessoryType = .none
@@ -64,7 +71,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return
         }
         
-        let refeicao = Refeicao(nome: nomeDaRefeicao, felicidade: felicidade)
+        let refeicao = Refeicao(nome: nomeDaRefeicao, felicidade: felicidade, itens: itensSelecionados)
         
         print("comi \(refeicao.nome) e fiquei com felicidade: \(refeicao.felicidade)")
         
