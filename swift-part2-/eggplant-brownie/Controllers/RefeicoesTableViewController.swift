@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RefeicoesTableViewController: UITableViewController {
+class RefeicoesTableViewController: UITableViewController, ViewControllerDelegate {
     
     var refeicoes = [
         Refeicao(nome: "Churros", felicidade: 5),
@@ -45,7 +45,7 @@ class RefeicoesTableViewController: UITableViewController {
         // Passar referencia do controller para outro
         if (segue.identifier == "adicionar"){
             if let viewController = segue.destination as? ViewController {
-                viewController.tableViewController = self
+                viewController.delegate = self
             }
         }
     }
