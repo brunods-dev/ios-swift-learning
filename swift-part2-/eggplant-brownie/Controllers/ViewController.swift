@@ -21,6 +21,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         Item(nome: "Molho Pesto", calorias: 13.0),
         Item(nome: "Molho carbonara", calorias: 21.0),
         Item(nome: "Molho pomodoro", calorias: 31.0),
+        Item(nome: "Molho WhatsApp", calorias: 31.0),
     ]
     var itensSelecionados: [Item] = []
     // MARK: IBOutlet
