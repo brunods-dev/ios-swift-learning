@@ -24,10 +24,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         Item(nome: "Molho WhatsApp", calorias: 31.0),
     ]
     var itensSelecionados: [Item] = []
+    
     // MARK: IBOutlet
     
     @IBOutlet var nomeTextField: UITextField?
     @IBOutlet weak var felicidadeTextField: UITextField?
+    
+    // MARK: Vie Life cycle
+    override func viewDidLoad() {
+        let buttonAddItem = UIBarButtonItem(title: "Adicionar", style: .plain, target: self, action: #selector(self.adicionarItem))
+        
+        navigationItem.rightBarButtonItem = buttonAddItem
+    }
+    
+    @objc func adicionarItem(){
+        
+    }
     
     //MARK: UITableViewDataSource
     
