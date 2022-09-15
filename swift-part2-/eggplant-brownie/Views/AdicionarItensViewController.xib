@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AdicionarItensViewController" customModule="eggplant_brownie" customModuleProvider="target">
             <connections>
+                <outlet property="caloriaTextField" destination="xSj-nG-zeI" id="xgx-bV-XKV"/>
+                <outlet property="nomeTextField" destination="Yls-sZ-YEn" id="sys-Nc-vJ8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
