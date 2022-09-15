@@ -48,12 +48,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         guard let cell = tableView.cellForRow(at: indexPath) else {return }
         
+        let tableRow = indexPath.row
+        
         if cell.accessoryType == .none{
-            let tableRow = indexPath.row
             itensSelecionados.append(itens[tableRow])
-            
             cell.accessoryType = .checkmark
         }else{
+            let item = itens[tableRow]
+            
+            guard let position = itensSelecionados.index(of: item) else {return}
+            
+            itensSelecionados.remove(at: position)
+            
             cell.accessoryType = .none
         }
         
